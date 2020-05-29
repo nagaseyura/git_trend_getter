@@ -1,0 +1,46 @@
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <h2>詳細</h2>
+      <p><div class="row"></p>
+        
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= image_tag(@tweet.image_url) if @tweet.image.present? %>
+            <div class="card-body">
+              <p class="card-text">
+                <%= @tweet.product_name %>
+                <p><%= @tweet.price %></p>
+                <p><%= simple_format(@tweet.sale) %></p>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/users/<%= @tweet.user_id %>">
+                  <small class="text-muted"><%= @tweet.user.nickname %></small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <% if current_user %>
+      <%= form_tag("/tweets/#{@tweet.id}/comments", method: :post) do %>
+        <textarea name="text" placeholder="コメントする" rows="2" cols="30"></textarea>
+        <p><input type="submit" value="SENT"></p>
+      <% end %>
+    <% end %>
+    <div class="comments">   
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+     
+    </div>
+  </div>
+ 

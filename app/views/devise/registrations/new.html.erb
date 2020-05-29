@@ -1,0 +1,40 @@
+<div class="success">
+<div class="album py-5 bg-light">
+<div class="container">
+  <h2>新規登録</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    
+    <p><div class="field">
+      <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
+      <p><%= f.text_field :nickname, autofocus: true, maxlength: "6" %></p>
+    </div></p>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <p><%= f.email_field :email %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @validatable %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <p><%= f.password_field :password, autocomplete: "new-password" %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
+    </div>
+
+    <div class="actions">
+      <p><%= f.submit "新規登録" %></p>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

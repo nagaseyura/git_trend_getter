@@ -1,0 +1,32 @@
+<div class="success">
+<div class="album py-5 bg-light">
+<div class="container">
+  <h2>ログイン</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <p><div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div></p>
+
+    <p><div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div></p>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.label :remember_me %>
+        <%= f.check_box :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <p><%= f.submit "ログイン" %></p>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= image_tag(tweet.image_url) if tweet.image.present? %>
+            <div class="card-body">
+              <p class="card-text">
+                <%= tweet.product_name %>
+                <p><%= tweet.price %></p>
+                <p><%= simple_format(tweet.sale) %></p>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                <%= link_to 'コメント', "/tweets/#{tweet.id}", class: "btn btn-sm btn-outline-secondary", method: :get %>
+                <% if user_signed_in? && current_user.id == tweet.user_id %>
+                
+                   
+                  <%= link_to '削除', "/tweets/#{tweet.id}",class: "btn btn-sm btn-outline-secondary", method: :delete %>
+                  
+                
+                <% end %>
+                </div>
+                <a href="/users/<%= tweet.user_id %>">
+                  <small class="text-muted"><%= tweet.user.nickname %></small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>

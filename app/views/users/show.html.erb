@@ -1,0 +1,15 @@
+
+<div class="album py-5 bg-light">
+    <div class="container">
+    <h2><%= @nickname %>さんの投稿一覧</h2>
+      <p><div class="row"></p>
+        <% @tweets.each do |tweet| %>
+         <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>
+        <% end %>
+        
+      </div>
+       <%= paginate(@tweets) %>
+    </div>
+  </div>
+
+
